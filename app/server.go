@@ -2,15 +2,13 @@ package main
 
 import (
 	"fmt"
-	"main/config"
 	"net"
 	"os"
 )
 
 func main() {
 	fmt.Println("Logs from your program will appear here!")
-	conf := config.GetConfig()
-	listener, err := net.Listen("tcp", conf.Host+":"+conf.Port)
+	listener, err := net.Listen("tcp", "localhost:6379")
 	defer listener.Close()
 	if err != nil {
 		fmt.Println("Failed to bind to port 6379")
