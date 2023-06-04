@@ -6,9 +6,14 @@ import (
 	"os"
 )
 
+const (
+	HOST = "localhost"
+	PORT = "6379"
+)
+
 func main() {
 	fmt.Println("Logs from your program will appear here!")
-	listener, err := net.Listen("tcp", "localhost:6379")
+	listener, err := net.Listen("tcp", HOST+":"+PORT)
 	defer listener.Close()
 	if err != nil {
 		fmt.Println("Failed to bind to port 6379")
