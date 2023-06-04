@@ -6,8 +6,11 @@ import (
 )
 
 func HandleRequests(request string) ([]byte, error) {
-	args := strings.Split(request, "\n")
-
+	fmt.Println("request")
+	fmt.Println(request)
+	args := strings.Split(request, " ")
+	fmt.Println("args")
+	fmt.Println(args)
 	if args[2] != "ping" {
 		return nil, fmt.Errorf("command not accepted")
 	}
