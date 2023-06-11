@@ -19,12 +19,12 @@ func main() {
 		fmt.Println("Failed to bind to port 6379")
 		os.Exit(1)
 	}
+	conn, err := listener.Accept()
+	defer conn.Close()
+	if err != nil {
+		fmt.Println("Failed to accept", err.Error())
+	}
 	for {
-		conn, err := listener.Accept()
-		defer conn.Close()
-		if err != nil {
-			fmt.Println("Failed to accept", err.Error())
-		}
 		buf := make([]byte, 1024)
 		err = checkDataIsReadable(err, conn, buf)
 
